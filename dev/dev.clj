@@ -41,4 +41,4 @@
   "Stop, refresh, and start a system."
   []
   (stop)
-  (refresh :after `go))
+  (refresh-all :after `go))

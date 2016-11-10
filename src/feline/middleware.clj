@@ -1,4 +1,5 @@
 (ns feline.middleware
+  "Middleware!"
   (:require [clojure.tools.logging :as log]))
 
 ;;; These wrappers ought to be defined in a separate project.

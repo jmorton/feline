@@ -1,5 +1,5 @@
 (ns feline.config
-  ""
+  "Configuration!"
   (:require [uberconf.core :as uberconf]
             [schema.core :as schema]))
 
