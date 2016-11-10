@@ -1,4 +1,5 @@
 (ns feline.problem
+  "Project specific problem resources."
   (:require [clojure.tools.logging :as log]
             [compojure.core :refer :all]
             [ring.middleware.problem :as problem])
@@ -47,17 +48,18 @@
   (log/debug request)
   (problem/problem (ex-info "Example" {})))
 
-(defn problem-resource
+(defn resource
   "Handlers for problem resource"
   [db msg]
   (context "/problems" req
    (ANY "/" [] (problem/as-json problem/default-problems))
    (ANY "/example" [] (throw (ex-info "Some Clojure exception info" {})))))
 
-(defn problem-transform
+(defn transformer
   "Used with problem/wrap-problem to transform problem before
   building response."
   [problem req db]
   (-> problem
       (link-problem req)
-      (save-problem db)))
+      (save-problem db))
+  problem)

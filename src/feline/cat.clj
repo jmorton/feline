@@ -1,5 +1,5 @@
 (ns feline.cat
-  ""
+  "Resources and representations."
   (:require [clojure.tools.logging :as log]
             [compojure.core :refer :all]
             [cheshire.core :as json]
@@ -64,7 +64,7 @@
 
 ;;; Routes
 
-(defn cat-resource
+(defn resource
   "Handlers for feline resource."
   [db msg]
   (routes
