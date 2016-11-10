@@ -6,9 +6,14 @@
             [clojure.tools.logging :as log])
   (:gen-class))
 
-(defn add-shutdown-handler [system stop-func]
+;#(defn add-shutdown-handler [system stop-func]
+;  (.addShutdownHook (Runtime/getRuntime)
+;                    (Thread. #(stop-func system))))
+
+(defn handle-shutdown [system]
   (.addShutdownHook (Runtime/getRuntime)
-                    (Thread. #(stop-func system))))
+                    (Thread. #(component/stop system)))
+  system)
 
 (defn -main
   "Start the app."
@@ -19,6 +24,6 @@
         feline.config/build
         feline.system/system
         component/start
-        (add-shutdown-handler component/stop))
+        handle-shutdown)
     (catch java.io.FileNotFoundException e
       (log/error "File not found, is `feline.ini` on the load path?"))))
