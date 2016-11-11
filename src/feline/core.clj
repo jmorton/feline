@@ -6,7 +6,9 @@
             [clojure.tools.logging :as log])
   (:gen-class))
 
-(defn handle-shutdown [system]
+(defn handle-shutdown
+  "Stop system during shutdown."
+  [system]
   (.addShutdownHook (Runtime/getRuntime)
                     (Thread. #(component/stop system)))
   system)
