@@ -40,7 +40,7 @@
                                    [http-kit.fake "0.2.2"]]}
              :uberjar {:aot :all
                        :main feline.core}}
-  :main ^:skip-aot feline.core
+  ;; :main ^:skip-aot feline.core
   :target-path "target/%s/"
   :compile-path "%s/classes"
-  :repl-options {:init-ns user})
+  :repl-options {:init-ns dev})

@@ -6,10 +6,6 @@
             [clojure.tools.logging :as log])
   (:gen-class))
 
-;#(defn add-shutdown-handler [system stop-func]
-;  (.addShutdownHook (Runtime/getRuntime)
-;                    (Thread. #(stop-func system))))
-
 (defn handle-shutdown [system]
   (.addShutdownHook (Runtime/getRuntime)
                     (Thread. #(component/stop system)))
